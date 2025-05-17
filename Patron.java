@@ -2,11 +2,15 @@
 // This class represent the user that will be using the library, with these attributes and Id, name, address, and Overdue
 //Fines
 
+import java.util.IllegalFormatException;
+import java.util.InputMismatchException;
+
 public class Patron {
 
     // Class attributes
     //ID will also be the class primary key
-    private int id;
+
+    private Integer id;
 
     private String name;
 
@@ -17,7 +21,7 @@ public class Patron {
     //Constructors
     public Patron() {}
 
-    public Patron(int id, String name, String address, float fine) {
+    public Patron(Integer id, String name, String address, float fine) {
         this.id = id;
         this.name = name;
         this.address = address;
@@ -32,13 +36,19 @@ public class Patron {
     }
 
     public void setId(int id) {
+      try {
+
+
         if (id < 1000000 || id > 9999999) {
 
-            //this forces the user to only input 7 digit id
+            //this forces the user to only input 7 digits id
             throw new IllegalArgumentException("Id must be a 7 digit number (1000000 to 9999999");
         }
         this.id = id;
-    }
+    } catch (InputMismatchException e) {
+          throw new IllegalArgumentException("Id must be a 7 digit number (1000000 to 9999999)");
+      }
+      }
 
     public String getName() {
         return name;
@@ -66,7 +76,11 @@ public class Patron {
 
     //Custom METHODS
 
-
+    //Override allows for the attributes to be printed in String format
+    @Override
+    public String toString() {
+        return "ID: " + id + "| Name: " + name + "| Address: " + address + "| Fine: $" + fine;
+    }
 
 
 }
