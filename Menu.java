@@ -34,19 +34,24 @@ public class Menu {
 
                     System.out.print("Please enter the address of the Patron: ");
                     String address = scanner.nextLine();
+                    float fine = (float) 0.0;
 
                     System.out.print("Does this patron owe any fines: Y/N?");
+                    String hasFine = scanner.nextLine().trim();
+
                     try{
-                        float fine = 0.0f;
-                        scanner.nextLine();
-                        if (scanner.nextLine().equals("Y")) {
+
+
+                        if (hasFine.equalsIgnoreCase("Y")) {
                             System.out.println("How much do they owe: ");
+                            System.out.flush();
                             fine = scanner.nextFloat();
                             scanner.nextLine();
 
                         }
                         Patron newPatron = new Patron(id, name, address, fine);
-                            System.out.println("Thank you Patron " + name + " has been added to the library!");
+                        manager.add(newPatron);
+                        System.out.println("Thank you Patron " + name + " has been added to the library!");
 
                     } catch (InputMismatchException | NumberFormatException e){
                         System.out.println("Invalid input. Please enter numbers where they are required only!");
@@ -58,6 +63,7 @@ public class Menu {
                     }
                     break;
                 case "2":
+                    System.out.println("Please Enter 7 digit Patron ID that you wish to remove: ");
                     manager.remove(Integer.parseInt(scanner.nextLine()));
                     break;
                 case "3":

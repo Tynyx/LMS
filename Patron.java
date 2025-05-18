@@ -2,7 +2,6 @@
 // This class represent the user that will be using the library, with these attributes and Id, name, address, and Overdue
 //Fines
 
-import java.util.IllegalFormatException;
 import java.util.InputMismatchException;
 
 public class Patron {
@@ -22,10 +21,10 @@ public class Patron {
     public Patron() {}
 
     public Patron(Integer id, String name, String address, float fine) {
-        this.id = id;
+        setId(id);
         this.name = name;
         this.address = address;
-        this.fine = fine;
+        setFine(fine);
 
     }
 
@@ -42,23 +41,42 @@ public class Patron {
         if (id < 1000000 || id > 9999999) {
 
             //this forces the user to only input 7 digits id
-            throw new IllegalArgumentException("Id must be a 7 digit number (1000000 to 9999999");
+            throw new IllegalArgumentException("Id must be a 7 digit number (1000000 to 9999999)");
         }
         this.id = id;
-    } catch (InputMismatchException e) {
+      } catch (InputMismatchException e) {
           throw new IllegalArgumentException("Id must be a 7 digit number (1000000 to 9999999)");
-      }
-      }
+        }
+    }
+
+    public void setName(String name) {
+        try {
+            if (name == null || name.trim().isEmpty()) {
+                throw new IllegalArgumentException("Name cannot be empty");
+            }
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("Name cannot be empty");
+        }
+        this.name = name;
+    }
 
     public String getName() {
         return name;
     }
 
     public String getAddress() {
+
         return address;
     }
 
     public void setAddress(String address) {
+        try {
+            if ( address == null || address.isEmpty()) {
+                throw new IllegalArgumentException("Address cannot be null or empty");
+            }
+        } catch (InputMismatchException e) {
+            throw new IllegalArgumentException("Address cannot be null or empty");
+        }
         this.address = address;
     }
 

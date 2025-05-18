@@ -90,7 +90,43 @@ public class LibraryManager {
             while(filescanner.hasNextLine()) {
 
                 String line = filescanner.nextLine();
-                System.out.print(line);
+                String[] separated = line.split(",");
+                // Now we will check make sure each section is only 4 parts and those parts follow our guidelines
+                if(separated.length != 4) {
+                    continue;
+                }
+
+            try {
+                int id = Integer.parseInt(separated[0].trim());
+                String name = separated[1].trim();
+                String address = separated[2].trim();
+                float fine = Float.parseFloat(separated[3].trim());
+
+                // now we begin to validate id and the fine just like if we were adding a new patron with those constraints
+                if (id < 1000000 || id > 9999999) {
+                    throw new IllegalArgumentException("Patron id must be between 1000000 and 99999999");
+                }
+
+                if ( name.isEmpty()) {
+                    throw new IllegalArgumentException("Patron name cannot be empty");
+                }
+
+                if ( address.isEmpty()) {
+                    throw new IllegalArgumentException("Patron address cannot be empty");
+                }
+
+                // now we validate fine
+                if (fine < 0 || fine > 250) {
+                    throw new IllegalArgumentException("Fine must be between 0 and 250");
+                }
+
+                System.out.println("Valid patron: ID: " + id + ", name: " + name + ", address: " + address + ", fine: " + fine);
+
+
+                } catch ( Exception e) {
+                    System.out.println("Error in data: " + line);
+
+                 }
 
             }
             System.out.println("-------End of File -------");
@@ -127,5 +163,9 @@ public class LibraryManager {
        } catch (Exception e) {
            System.out.println("Unexpected error while listing all patrons: " + e.getMessage());
        }
+    }
+
+    public int getPatronCount() {
+        return patrons.size();
     }
 }
