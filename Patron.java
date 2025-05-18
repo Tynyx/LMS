@@ -1,3 +1,5 @@
+//LaTroy Richardson CEN-3024c-31774 May 18th 2025
+// Software Development 1
 // Patron Class
 // This class represent the user that will be using the library, with these attributes and Id, name, address, and Overdue
 //Fines
@@ -95,6 +97,7 @@ public class Patron {
     //Custom METHODS
 
     //Override allows for the attributes to be printed in String format
+    //returns all attributes for patron into string format
     @Override
     public String toString() {
         return "ID: " + id + "| Name: " + name + "| Address: " + address + "| Fine: $" + fine;

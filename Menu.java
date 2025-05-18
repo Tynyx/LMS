@@ -1,3 +1,5 @@
+//LaTroy Richardson CEN-3024c-31774 May 18th 2025
+// Software Development 1
 // Menu class is the main class that initialize all the code in the LBM and Patron Class
 // This needs to have the all features and listed in the SDLC and ensure the code follows the constraints listed as well
 
@@ -6,6 +8,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Menu {
+    // This is the main class that take all the code we used and make it work together the initializer
 
     public static void main(String[] args) {
         LibraryManager manager = new LibraryManager();
@@ -22,7 +25,8 @@ public class Menu {
 
 
             String choice = scanner.nextLine();
-
+            // this switch is used to generate multiple commands to use while the software is running and navigate them
+            // easily. returns a list of 5 options and upon selecting one generates new options or commands.
             switch (choice) {
                 case "1":
                     System.out.println("Please Enter 7 digit Patron ID: ");

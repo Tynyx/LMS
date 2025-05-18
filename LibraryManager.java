@@ -1,3 +1,5 @@
+//LaTroy Richardson CEN-3024c-31774 May 18th 2025
+// Software Development 1
 //Library manager Class
 // This class is to be the "manager" or the librarian that would be managing the patrons and files of the library
 
@@ -50,6 +52,7 @@ public class LibraryManager {
 
 
     //Remove patron This gives the LBM the ability to remove any patron through id
+    // returns a boolean of true or false
     public boolean remove(Integer patronId) {
       // create a try and catch to handle any mishaps
         try {
@@ -80,6 +83,7 @@ public class LibraryManager {
 
     //loadFromFile(path: String)
     // this method allows the LBM to upload a file and have everything on the file be read an printed on the screen
+
     public void loadFileFrom(String path) {
         // path is the file name provided by the user
         try {
@@ -136,7 +140,8 @@ public class LibraryManager {
         }
 
     }
-
+    // this is an greeting to the loadfileform so you know what u need to do
+    // returns the txt file uploaded
     public void promptAndLoadFile() {
         Scanner inputScanner = new Scanner(System.in);
         System.out.println("Enter the path to the file: ");
@@ -144,8 +149,8 @@ public class LibraryManager {
         loadFileFrom(path);
     }
 
-    // listallpatrons() allows the LBM to see every patron in the system and remove one or a few and display the update on
-    //screen
+    // listallpatrons() allows the LBM to see every patron in the system
+    //returns a list of patrons or no data found
 
     // need to make the patrons list is not empty and let the LBM know if the list is empty
     public void listAllPatrons() {
