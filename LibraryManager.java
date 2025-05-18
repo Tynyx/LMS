@@ -41,6 +41,7 @@ public class LibraryManager {
             } else {
                 patrons.add(patron);
                 System.out.println("Patron added: " + patron);
+                System.out.println("All Patrons: " + patrons.size());
             }
         } catch (Exception e) {
             System.out.println("Patron could not be added: " + patron);

@@ -56,6 +56,7 @@ public class Menu {
                         Patron newPatron = new Patron(id, name, address, fine);
                         manager.add(newPatron);
                         System.out.println("Thank you Patron " + name + " has been added to the library!");
+                        manager.listAllPatrons();
 
                     } catch (InputMismatchException | NumberFormatException e){
                         System.out.println("Invalid input. Please enter numbers where they are required only!");
@@ -69,6 +70,7 @@ public class Menu {
                 case "2":
                     System.out.println("Please Enter 7 digit Patron ID that you wish to remove: ");
                     manager.remove(Integer.parseInt(scanner.nextLine()));
+                    manager.listAllPatrons();
                     break;
                 case "3":
                     manager.promptAndLoadFile();
