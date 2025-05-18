@@ -11,8 +11,8 @@ public class LibraryManager {
     // Attributes
 
     // the only attribute we really have is the foreign key from patron
-    // i set it as a List  because i believe this would give us the logic to call out any attribute
-    // from the patron instead of just referring to its PK since we need to be able to remove an patron through ID
+    // I set it as a List  because I believe this would give us the logic to call out any attribute
+    // from the patron instead of just referring to its PK since we need to be able to remove a patron through ID
     //means as stated int the SDLC
     private List<Patron> patrons;
 
@@ -20,6 +20,9 @@ public class LibraryManager {
 
     public LibraryManager(List<Patron> patrons) {
         this.patrons = patrons;
+    }
+    public LibraryManager() {
+        this.patrons = new ArrayList<>();
     }
 
 
@@ -39,7 +42,7 @@ public class LibraryManager {
             }
         } catch (Exception e) {
             System.out.println("Patron could not be added: " + patron);
-            e.printStackTrace();
+
         }
 
     }
@@ -48,7 +51,7 @@ public class LibraryManager {
 
     //Remove patron This gives the LBM the ability to remove any patron through id
     public boolean remove(Integer patronId) {
-      // create an try and catch to handle any mishaps
+      // create a try and catch to handle any mishaps
         try {
 
 
@@ -105,10 +108,10 @@ public class LibraryManager {
         loadFileFrom(path);
     }
 
-    // listallpatrons allows the LBM to see every patron in the system and remove one or a few and display the update on
+    // listallpatrons() allows the LBM to see every patron in the system and remove one or a few and display the update on
     //screen
 
-    // need to make the patrons list isnt empty and let the LBM know if the list is empty
+    // need to make the patrons list is not empty and let the LBM know if the list is empty
     public void listAllPatrons() {
        try {
            if (patrons.isEmpty()) {
