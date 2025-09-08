@@ -53,7 +53,7 @@ public class LibraryManager {
 
 
     //Remove patron This gives the LBM the ability to remove any patron through id
-    // returns a boolean of true or false
+    // returns a boolean if true or false
     public boolean remove(Integer patronId) {
       // create a try and catch to handle any mishaps
         try {
@@ -83,7 +83,8 @@ public class LibraryManager {
 
 
     //loadFromFile(path: String)
-    // this method allows the LBM to upload a file and have everything on the file be read an printed on the screen
+    // this method allows the LBM to upload a file and have everything on the file be read and printed on the screen
+    //and saved
 
     public void loadFileFrom(String path) {
         // path is the file name provided by the user
@@ -126,6 +127,7 @@ public class LibraryManager {
                 }
 
                 System.out.println("Valid patron: ID: " + id + ", name: " + name + ", address: " + address + ", fine: " + fine);
+                patrons.add(new Patron(id, name, address, fine));
 
 
                 } catch ( Exception e) {

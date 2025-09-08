@@ -70,6 +70,17 @@ public class Menu {
                 case "2":
                     System.out.println("Please Enter 7 digit Patron ID that you wish to remove: ");
                     manager.remove(Integer.parseInt(scanner.nextLine()));
+
+                    try{
+
+                        if (manager.remove(Integer.parseInt(scanner.nextLine()))) {
+                        System.out.println("Thank you Patron has been removed from library!");
+                        manager.listAllPatrons();}
+                    } catch (InputMismatchException | NumberFormatException e ) {
+                        System.out.println("Invalid input. Please enter patron ID that you wish to remove!");
+                    } catch (IllegalArgumentException e) {
+                        System.out.println(" Validation Failed. Please try again!" + e.getMessage());
+                    }
                     manager.listAllPatrons();
                     break;
                 case "3":
