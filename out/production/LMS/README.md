@@ -80,20 +80,4 @@ This application was developed following the **V-Model SDLC**:
 
 ---
 
-## 💡 Future Improvements
 
-* Export updated patron list to file
-* Search patrons by name
-* GUI implementation using JavaFX or Swing
-* Integration with a relational database
-
----
-
-## 👨‍💻 Author
-
-LaTroy Richardson Sr. 
----
-
-## 📜 License
-
-This project is open source and available for educational and portfolio use.

@@ -6,6 +6,7 @@
 import javax.xml.xpath.XPath;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.charset.IllegalCharsetNameException;
 import java.util.*;
 
 public class LibraryManager {
@@ -150,6 +151,7 @@ public class LibraryManager {
         System.out.println("Enter the path to the file: ");
         String path = inputScanner.nextLine();
         loadFileFrom(path);
+
     }
 
     // listallpatrons() allows the LBM to see every patron in the system
