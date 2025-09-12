@@ -17,7 +17,7 @@ public class LibraryManager {
     // I set it as a List  because I believe this would give us the logic to call out any attribute
     // from the patron instead of just referring to its PK since we need to be able to remove a patron through ID
     //means as stated int the SDLC
-    private List<Patron> patrons;
+    private List<Patron> patrons = new ArrayList<>();
 
     //Constructors
 
@@ -89,6 +89,7 @@ public class LibraryManager {
 
     public void loadFileFrom(String path) {
         // path is the file name provided by the user
+        int added =0;
         try {
             File file = new File(path);
             Scanner filescanner = new Scanner(file);
@@ -97,6 +98,9 @@ public class LibraryManager {
             while(filescanner.hasNextLine()) {
 
                 String line = filescanner.nextLine();
+                if (line.isEmpty() || line.startsWith("#")) continue;
+
+
                 String[] separated = line.split(",");
                 // Now we will check make sure each section is only 4 parts and those parts follow our guidelines
                 if(separated.length != 4) {
@@ -127,17 +131,21 @@ public class LibraryManager {
                     throw new IllegalArgumentException("Fine must be between 0 and 250");
                 }
 
-                System.out.println("Valid patron: ID: " + id + ", name: " + name + ", address: " + address + ", fine: " + fine);
                 patrons.add(new Patron(id, name, address, fine));
+                added++;
+
+                System.out.println("Valid patron: ID: " + id + ", name: " + name + ", address: " + address + ", fine: " + fine);
+
 
 
                 } catch ( Exception e) {
-                    System.out.println("Error in data: " + line);
+                    System.out.println("Error in data: " + line+ "-> " + e.getMessage());
 
                  }
 
             }
             System.out.println("-------End of File -------");
+            System.out.println("Patrons loaded: " + added + " patrons. In-memory total: " + patrons.size());
             filescanner.close();
         } catch (FileNotFoundException e)  {
             System.out.println("File not found" + path);
@@ -146,10 +154,9 @@ public class LibraryManager {
     }
     // this is an greeting to the loadfileform so you know what u need to do
     // returns the txt file uploaded
-    public void promptAndLoadFile() {
-        Scanner inputScanner = new Scanner(System.in);
+    public void promptAndLoadFile(Scanner input) {
         System.out.println("Enter the path to the file: ");
-        String path = inputScanner.nextLine();
+        String path = input.nextLine().trim();
         loadFileFrom(path);
 
     }
